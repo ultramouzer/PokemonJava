@@ -4,20 +4,25 @@ public class Pokemon {
     private String type2;
 
     private int hp;
+    private int currentHp;
     private int atk;
     private int def;
     private int spatk;
     private int spdef;
     private int spd;
+    private Move[] moveset = new Move[4];
 
     public Pokemon(String name, String type1, String type2, int hp, int atk, int def, int spatk, int spdef, int spd) {
+        //redo the hp formula
         this.name = name;
         this.type1 = type1;
         this.type2 = type2;
         this.hp = hp;
+        currentHp = hp;
         this.atk = atk;
         this.def = def;
         this.spatk = spatk;
+        this.spdef = spdef;
         this.spd = spd;
     }
 
@@ -55,5 +60,27 @@ public class Pokemon {
 
     public int spd() {
         return spd;
+    }
+
+    public void reduceHp(int damage){
+        currentHp -= damage;
+    }
+
+    public double hpPercent(){
+        //1 decimal place
+        return ((double) Math.round( 1000 * currentHp / hp)) / 10;
+    }
+
+    public Move move(int idx){
+        return moveset[idx];
+    }
+
+    public void learn(Move move){
+        for(int i = 0; i < moveset.length; i++){
+            if(moveset[i] == null){
+                moveset[i] = move;
+                return;
+            }
+        }
     }
 }
