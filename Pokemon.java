@@ -13,7 +13,6 @@ public class Pokemon {
     private Move[] moveset = new Move[4];
 
     public Pokemon(String name, String type1, String type2, int hp, int atk, int def, int spatk, int spdef, int spd) {
-        // redo the hp formula
         this.name = name;
         this.type1 = type1;
         this.type2 = type2;
