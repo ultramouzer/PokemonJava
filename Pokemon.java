@@ -39,7 +39,7 @@ public class Pokemon {
     }
 
     public int hp() {
-        return hp;
+        return maxHp;
     }
 
     public int atk() {
