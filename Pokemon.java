@@ -3,7 +3,7 @@ public class Pokemon {
     private String type1;
     private String type2;
 
-    private int hp;
+    private int maxHp;
     private int currentHp;
     private int atk;
     private int def;
@@ -13,12 +13,12 @@ public class Pokemon {
     private Move[] moveset = new Move[4];
 
     public Pokemon(String name, String type1, String type2, int hp, int atk, int def, int spatk, int spdef, int spd) {
-        //redo the hp formula
+        // redo the hp formula
         this.name = name;
         this.type1 = type1;
         this.type2 = type2;
-        this.hp = hp;
-        currentHp = hp;
+        maxHp = 2 * hp;
+        currentHp = 2 * hp;
         this.atk = atk;
         this.def = def;
         this.spatk = spatk;
@@ -62,22 +62,22 @@ public class Pokemon {
         return spd;
     }
 
-    public void reduceHp(int damage){
+    public void reduceHp(int damage) {
         currentHp -= damage;
     }
 
-    public double hpPercent(){
-        //1 decimal place
-        return ((double) Math.round( 1000 * currentHp / hp)) / 10;
+    public double hpPercent() {
+        // 1 decimal place
+        return ((double) Math.round(1000 * currentHp / maxHp)) / 10;
     }
 
-    public Move move(int idx){
+    public Move move(int idx) {
         return moveset[idx];
     }
 
-    public void learn(Move move){
-        for(int i = 0; i < moveset.length; i++){
-            if(moveset[i] == null){
+    public void learn(Move move) {
+        for (int i = 0; i < moveset.length; i++) {
+            if (moveset[i] == null) {
                 moveset[i] = move;
                 return;
             }
